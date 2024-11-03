@@ -3,7 +3,9 @@
 // Will extends in controllers folder
 class Controller{
 
-    public function __construct(){
-        echo "This is Controller class";
+    public function view($view, $data = []){
+        require_once '../app/views/' . $view . '.php';
     }
+
+    
 }
