@@ -1,24 +1,22 @@
 <?php
 
 class Students_model{
-    private $dbh, //database handler
-            $stmt; //statement
-    
-    public function __construct(){
-        // data source name
-        $dsn = 'mysql:host=localhost;dbname=learn_mvc';
+    private $table = 'students',
+            $db;
 
-        try{
-            // PHP Data Objects
-            $this->dbh = new PDO($dsn, 'root', '');
-        }catch(PDOException $e){
-            die($e->getMessage());
-        }
+    public function __construct(){
+        $this->db = new Database;
     }
 
+
     public function  get_allStudents(){
-        $this->stmt = $this->dbh->prepare('SELECT * FROM  students');
-        $this->stmt->execute();
-        return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+        $this->db->query('SELECT * FROM ' . $this->table);
+        return $this->db->resultSet();
+    }
+
+    public function getStudentsById($id){
+        $this->db->query('SELECT * FROM ' . $this->table . ' WHERE id=:id');
+        $this->db->bind('id', $id);
+        return $this->db->single();
     }
 }

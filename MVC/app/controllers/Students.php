@@ -9,4 +9,11 @@ class Students extends Controller{
         $this->view('template/footer');
     }
 
+    public  function details($id){
+        $data['title'] = 'Students Details';
+        $data['students'] = $this->model('Students_model')->getStudentsById($id);
+        $this->view('template/header', $data);
+        $this->view('students/details', $data);
+        $this->view('template/footer');
+    }
 }
