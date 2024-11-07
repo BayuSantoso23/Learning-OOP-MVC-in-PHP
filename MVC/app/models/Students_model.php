@@ -19,4 +19,20 @@ class Students_model{
         $this->db->bind('id', $id);
         return $this->db->single();
     }
+
+    public function addStudentData($data){
+        $query = "INSERT INTO students VALUES('', :name, :age, :email, :job)";
+
+        $this->db->query($query);
+        $this->db->bind('name', $data['name']);
+        $this->db->bind('age', $data['age']);
+        $this->db->bind('email', $data['email']);
+        $this->db->bind('job', $data['job']);
+
+        $this->db->execute();
+
+        return $this->db->rowCount();
+    }
+
+    
 }
