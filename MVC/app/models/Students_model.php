@@ -34,5 +34,15 @@ class Students_model{
         return $this->db->rowCount();
     }
 
+    public function deleteStudentData($id){
+        $query = "DELETE FROM students WHERE id = :id";
+        $this->db->query($query);
+        $this->db->bind('id', $id);
+
+        $this->db->execute();
+
+        return $this->db->rowCount();
+    }
+
     
 }

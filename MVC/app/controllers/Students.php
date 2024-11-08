@@ -28,6 +28,19 @@ class Students extends Controller{
             exit;
         }
     }
+    public function delete($id){
+        if($this->model('Students_model')->deleteStudentData($id) > 0){
+            Flasher::setFlash('Successfully', 'deleted', 'success');
+            header('Location: '. BASEURL . '/Students');
+            exit;
+        }else{
+            Flasher::setFlash('Failed', 'deleted', 'danger');
+            header('Location: '. BASEURL . '/Students');
+            exit;
+        }
+    }
+
+
 
     
 }

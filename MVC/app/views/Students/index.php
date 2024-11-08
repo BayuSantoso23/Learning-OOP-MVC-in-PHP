@@ -14,10 +14,14 @@
             <h3>Students List</h3>
             <ul class="list-group">
                 <?php foreach($data['students'] as $students):?>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <li class="list-group-item ">
                         <?= $students['name']; ?>
+                        <a href="<?= BASEURL; ?>/students/delete/<?= $students['id']; ?>" 
+                        class="badge badge-danger float-right ml-2" 
+                        onclick="return confirm('Are you sure to delete this?')">delete</a>
+                        
                         <a href="<?= BASEURL; ?>/students/details/<?= $students['id']; ?>" 
-                        class="badge badge-primary ">details</a>
+                        class="badge badge-primary float-right ml-2">details</a>
                     </li>
                 <?php endforeach; ?>
             </ul>
