@@ -8,23 +8,30 @@
     <div class="row">
         <dic class="col-lg-6">
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#formModal">
+            <button type="button" class="btn btn-primary mb-3 addModalButton" data-toggle="modal" data-target="#formModal">
                 Add Student
             </button>
-            <h3>Students List</h3>
+
             <ul class="list-group">
-                <?php foreach($data['students'] as $students):?>
-                    <li class="list-group-item ">
+                <?php foreach($data['students'] as $students): ?>
+                    <li class="list-group-item">
                         <?= $students['name']; ?>
+
                         <a href="<?= BASEURL; ?>/students/delete/<?= $students['id']; ?>" 
-                        class="badge badge-danger float-right ml-2" 
-                        onclick="return confirm('Are you sure to delete this?')">delete</a>
-                        
+                          class="badge badge-danger float-right ml-2" 
+                          onclick="return confirm('Are you sure to delete this?')">delete</a>
+
+                        <a href="#" 
+                          class="badge badge-success float-right ml-2 editModalButton"
+                          data-toggle="modal" data-target="#formModal" 
+                          data-id="<?= $students['id']; ?>">Edit</a>
+
                         <a href="<?= BASEURL; ?>/students/details/<?= $students['id']; ?>" 
-                        class="badge badge-primary float-right ml-2">details</a>
+                          class="badge badge-primary float-right ml-2">details</a>
                     </li>
                 <?php endforeach; ?>
             </ul>
+
         </dic>
     </div>
 </div>
@@ -41,6 +48,7 @@
       </div>
       <div class="modal-body">
         <form action="<?= BASEURL; ?>/Students/add" method="POST">
+          <input type="hidden" name="id" id="id">
 
             <!-- Name Form -->
             <div class="form-group">
@@ -72,6 +80,7 @@
                 <option value="Battleship">Battleship</option>
                 <option value="President">President</option>
                 <option value="Bussinessman">Bussinessman</option>
+                <option value="Soccer Player">Soccer Player</option>
               </select>
              </div>
             
@@ -84,7 +93,3 @@
     </div>
   </div>
 </div>
-
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-0jpkqLi6E7Q5H59j7L3s3Y1O/J+4fGHgGg0IcHKFgy3KtRUXBOoAcBRTZ11IhD14" crossorigin="anonymous"></script>
-

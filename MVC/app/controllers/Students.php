@@ -16,7 +16,6 @@ class Students extends Controller{
         $this->view('students/details', $data);
         $this->view('template/footer');
     }
-
     public function add(){
         if($this->model('Students_model')->addStudentData($_POST) > 0){
             Flasher::setFlash('Successfully', 'added', 'success');
@@ -40,7 +39,21 @@ class Students extends Controller{
         }
     }
 
+    public function getEdit(){
+        echo json_encode($this->model('Students_Model')->getStudentsById($_POST['id']));
+    }
 
+    public function edit(){
+        if($this->model('Students_model')->editStudentData($_POST) > 0){
+            Flasher::setFlash('Successfully', 'edited', 'success');
+            header('Location: '. BASEURL . '/Students');
+            exit;
+        }else{
+            Flasher::setFlash('Failed', 'edited', 'danger');
+            header('Location: '. BASEURL . '/Students');
+            exit;
+        }
+    }
 
     
 }
