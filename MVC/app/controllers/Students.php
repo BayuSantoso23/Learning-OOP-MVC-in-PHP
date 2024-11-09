@@ -55,5 +55,13 @@ class Students extends Controller{
         }
     }
 
+    public function search(){
+        $data['title'] = 'Students List';
+        $data['students'] = $this->model('Students_model')->searchStudentData();
+        $this->view('template/header', $data);
+        $this->view('students/index', $data);
+        $this->view('template/footer');
+    }
+
     
 }

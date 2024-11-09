@@ -5,13 +5,35 @@
         <?php Flasher::flash(); ?>
       </div>
     </div>
-    <div class="row">
-        <dic class="col-lg-6">
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary mb-3 addModalButton" data-toggle="modal" data-target="#formModal">
-                Add Student
-            </button>
 
+    <div class="row mt-2">
+      <div class="col-lg-6">
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary mb-3 addModalButton" data-toggle="modal" data-target="#formModal">
+              Add Student
+          </button>
+      </div>
+    </div>
+    
+    <!-- Search -->
+    <div class="row mt-2">
+      <div class="col-lg-6">
+        <form action="<?=BASEURL;?>/Students/search" method="POST">
+            <!-- Button trigger modal -->
+          <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Search student" name="keyword" id="keyword"
+            aria-label="Recipient's username" aria-describedby="basic-addon2" autocomplete="off">
+            <div class="input-group-append">
+              <button class="btn btn-primary" type="submit" id="searchButton" >Search</button>
+            </div>
+          </div>
+        </form> 
+      </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6">
+            <h3>Students List</h3>
             <ul class="list-group">
                 <?php foreach($data['students'] as $students): ?>
                     <li class="list-group-item">
@@ -32,7 +54,7 @@
                 <?php endforeach; ?>
             </ul>
 
-        </dic>
+        </div>
     </div>
 </div>
 
